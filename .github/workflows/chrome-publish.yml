@@ -1,0 +1,37 @@
+name: Publish extension in Chrome Store
+
+# Controls when the workflow will run
+on:
+  release:
+    types: [published]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - run: npm install
+      - run: npm run process-styles
+      - run: rm -rf node_modules
+      - run: npm install --production
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r tldr-pages.zip .
+      - uses: trmcnvn/chrome-addon@v2
+        with:
+          # extension is only necessary when updating an existing addon,
+          # omitting it will create a new addon
+          extension: fcccijijdgmmcjnifgdhcmepnkcdingf
+          zip: tldr-pages.zip
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
