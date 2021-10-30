@@ -11,6 +11,7 @@
 ## Download
 
 **Note:** The extension is being reviewed by the Chrome Store and Edge developer program and should be published in a near future.
+
 🚧 Get the extension 
 [in the Chrome Store](https://chrome.google.com/webstore/search/tldr-pages). 🚧
 
