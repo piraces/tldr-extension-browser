@@ -5,3 +5,4 @@ styles/main.min.css.map
 styles/main.css.map
 node_modules
 .DS_Store
+*.zip

@@ -22,6 +22,7 @@
   "background": {
     "service_worker": "background.js"
   },
+  "update_URL": "https://edge.microsoft.com/extensionwebstorebase/v1/crx",
   "permissions": ["contextMenus", "tabs"],
   "action": {
     "default_icon": {
