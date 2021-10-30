@@ -1,39 +1,40 @@
 {
-  "manifest_version": 2,
-  "name": "tldr-chrome",
-  "version": "0.3.0",
-  "description": "Simplified and community-driven man pages for chrome",
-  "author": "Tom Hill",
+  "name": "tldr pages",
+  "version": "1.0.0",
+  "description": "Collaborative cheatsheets for console commands (tldr project) now in your Browser!",
+  "author": "Raúl Piracés",
   "homepage_url": "https://tldr.sh",
+  "manifest_version": 3,
   "content_scripts": [
     {
       "matches": [
         "<all_urls>"
       ],
       "js": [
-        "marked.js",
+        "node_modules/marked/marked.min.js",
         "main.js"
       ],
       "css": [
-        "styles/main.css"
+        "styles/main.min.css"
       ]
     }
   ],
   "background": {
-    "scripts": [
-      "background.js"
-    ]
+    "service_worker": "background.js"
   },
-  "permissions": [
-    "contextMenus",
-    "tabs"
-  ],
-  "web_accessible_resources": [
-    "fonts/*"
-  ],
+  "permissions": ["contextMenus", "tabs"],
+  "action": {
+    "default_icon": {
+        "16": "/icons/icon16.png",
+        "32": "/icons/icon32.png",
+        "48": "/icons/icon48.png",
+        "128": "/icons/icon128.png"
+    }
+  },
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+      "16": "/icons/icon16.png",
+      "32": "/icons/icon32.png",
+      "48": "/icons/icon48.png",
+      "128": "/icons/icon128.png"
   }
 }

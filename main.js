@@ -1,6 +1,5 @@
 // Define constants
-const apiContentURL = 'https://api.github.com/repos/tldr-pages/tldr/contents/pages/common'
-const tldrURL = 'https://raw.githubusercontent.com/tldr-pages/tldr/master/pages'
+const apiContentURL = 'https://api.github.com/repos/tldr-pages/tldr/contents/pages';
 
 let tooltip = null
 let arrow = null
@@ -9,18 +8,24 @@ let currentContent = null
 
 // For right-click tldr search
 chrome.runtime.onMessage.addListener(
-  (request, sender, sendResponse) => {
-    console.log(request.word)
-    searchTLDR(request.word.toLowerCase())
-    checkCode()
+  (request) => {
+    searchTLDR(request.word.toLowerCase().trim().replace(' ', '-'));
+    checkCode();
   }
 )
 
 function searchTLDR (command, platform = 'common') {
   // Fetch the content from TLDR github repo
-  fetch(`${tldrURL}/${platform}/${command}.md`)
+  fetch(`${apiContentURL}/${platform}/${command}.md`)
     .then((response) => {
-      return response.text()
+      return response.json();
+    })
+    .then(responseText => {
+      if (responseText.content && responseText.encoding == 'base64') {
+        return atob(responseText.content);
+      } else {
+        return '404: Not Found';
+      }
     })
     .then(data => {
       createTooltip(data)
@@ -140,7 +145,6 @@ function checkCode () {
       for (word of tag.innerText.split(' ')) {
         if (commandList.includes(word.toLowerCase())) {
           // if word is in commandList
-          console.log(`FOUND COMMAND: ${word}`)
         }
       }
     }
