@@ -23,6 +23,7 @@ jobs:
       - run: npm run process-styles
       - run: rm -rf node_modules
       - run: npm install --production
+      - run: rm -rf assets && rm -rf .github && rm -rf .git && rm .gitignore package-lock.json package.json part.edge.json part.firefox.json CHANGELOG.md styles/main.css styles/main.css.map styles/main.scss
       - run: zip -qq -r tldr-pages.zip .
       - uses: trmcnvn/chrome-addon@v2
         with:
