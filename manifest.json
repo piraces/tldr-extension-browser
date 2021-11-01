@@ -4,7 +4,7 @@
   "description": "Collaborative cheatsheets for console commands (tldr project) now in your Browser!",
   "author": "Raúl Piracés",
   "homepage_url": "https://tldr.sh",
-  "manifest_version": 3,
+  "manifest_version": 2,
   "content_scripts": [
     {
       "matches": [
@@ -20,7 +20,13 @@
     }
   ],
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "raul.piraces@gmail.com",
+      "strict_min_version": "42.0"
+    }
   },
   "permissions": ["contextMenus"],
   "action": {
