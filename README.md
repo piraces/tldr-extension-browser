@@ -1,5 +1,6 @@
 # tldr-extension-browser
 [![Publish extension in Chrome Store](https://github.com/piraces/tldr-extension-browser/actions/workflows/chrome-publish.yml/badge.svg)](https://github.com/piraces/tldr-extension-browser/actions/workflows/chrome-publish.yml)
+[![Generate artifacts to publish](https://github.com/piraces/tldr-extension-browser/actions/workflows/artifacts-zip.yml/badge.svg)](https://github.com/piraces/tldr-extension-browser/actions/workflows/artifacts-zip.yml)
 
 
 📚 A browser extension for [tldr-pages](https://github.com/tldr-pages/tldr).
