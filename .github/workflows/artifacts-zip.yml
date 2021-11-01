@@ -1,0 +1,83 @@
+name: Generate artifacts to publish
+
+# Controls when the workflow will run
+on:
+  release:
+    types: [published]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  chrome:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - run: npm install
+      - run: npm run process-styles
+      - run: rm -rf node_modules
+      - run: npm install --production
+      - run: jq -s 'reduce .[] as $item ({}; . * $item)' manifest.json part.chrome.json > manifest.json
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r tldr-pages-chrome.zip .
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: tldr-pages-chrome
+          path: tldr-pages-chrome.zip
+
+  firefox:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - run: npm install
+      - run: npm run process-styles
+      - run: rm -rf node_modules
+      - run: npm install --production
+      - run: jq 'del(.background)' manifest.json > manifest.json
+      - run: jq -s 'reduce .[] as $item ({}; . * $item)' manifest.json part.firefox.json > manifest.json
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r tldr-pages-firefox.zip .
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: tldr-pages-firefox
+          path: tldr-pages-firefox.zip
+
+  edge:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+      - run: npm install
+      - run: npm run process-styles
+      - run: rm -rf node_modules
+      - run: npm install --production
+      - run: jq -s 'reduce .[] as $item ({}; . * $item)' manifest.json part.edge.json > manifest.json
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r tldr-pages.zip .
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: tldr-pages-edge
+          path: tldr-pages-edge.zip
