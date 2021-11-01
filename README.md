@@ -10,10 +10,13 @@
 
 ## Download
 
-**Note:** The extension is being reviewed by the Chrome Store and Edge developer program and should be published in a near future.
+**Note:** The extension is being reviewed by the Chrome Store and should be published in a near future.
 
-🚧 Get the extension 
-[in the Chrome Store](https://chrome.google.com/webstore/search/tldr-pages). 🚧
+**Get the extension:**
+- For Edge: [https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
+
+- 🚧 For Chrome (pending review): [in the Chrome Store](https://chrome.google.com/webstore/search/tldr-pages). 🚧
+- 🚧 For Firefox (pending review) 🚧
 
 ## Loading Extension for development
 
