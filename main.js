@@ -7,12 +7,18 @@ let currentContent = null
 
 
 // For right-click tldr search
-chrome.runtime.onMessage.addListener(
-  (request) => {
-    searchTLDR(request.word.toLowerCase().trim().replace(' ', '-'));
-    checkCode();
-  }
-)
+var port = chrome.runtime.connect();
+port.postMessage({comm: 'tldr-pages-comm', data: true});
+port.onMessage.addListener(function (message) {
+    if (message.comm === 'tldr-pages-comm') {
+      getContent(message.data);
+    }
+});
+
+function getContent(word) {
+  searchTLDR(word.toLowerCase().trim().replace(' ', '-'));
+  checkCode();
+}
 
 function searchTLDR (command, platform = 'common') {
   // Fetch the content from TLDR github repo
