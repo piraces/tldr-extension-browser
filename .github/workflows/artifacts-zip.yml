@@ -45,9 +45,9 @@ jobs:
       - run: npm run process-styles
       - run: rm -rf node_modules
       - run: npm install --production
-      - run: rm -rf assets && rm -rf .github && rm -rf .git && rm .gitignore package-lock.json package.json part.edge.json part.firefox.json CHANGELOG.md styles/main.css styles/main.css.map styles/main.scss
       - run: jq 'del(.background)' manifest.json > manifest.json
       - run: jq -s 'reduce .[] as $item ({}; . * $item)' manifest.json part.firefox.json > manifest.json
+      - run: rm -rf assets && rm -rf .github && rm -rf .git && rm .gitignore package-lock.json package.json part.edge.json part.firefox.json CHANGELOG.md styles/main.css styles/main.css.map styles/main.scss
       - run: zip -qq -r tldr-pages-firefox.zip .
 
       - uses: actions/upload-artifact@v2
@@ -69,8 +69,8 @@ jobs:
       - run: npm run process-styles
       - run: rm -rf node_modules
       - run: npm install --production
-      - run: rm -rf assets && rm -rf .github && rm -rf .git && rm .gitignore package-lock.json package.json part.edge.json part.firefox.json CHANGELOG.md styles/main.css styles/main.css.map styles/main.scss
       - run: jq -s 'reduce .[] as $item ({}; . * $item)' manifest.json part.edge.json > manifest.json
+      - run: rm -rf assets && rm -rf .github && rm -rf .git && rm .gitignore package-lock.json package.json part.edge.json part.firefox.json CHANGELOG.md styles/main.css styles/main.css.map styles/main.scss
       - run: zip -qq -r tldr-pages-edge.zip .
 
       - uses: actions/upload-artifact@v2
