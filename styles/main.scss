@@ -1,16 +1,68 @@
+$color-dark: #ffffff;
+$background-dark: #000000;
+$anchor-color-dark: #9cb2f5;
+$code-color-dark: #ffffff;
+$code-background-dark: #313131;
+$code-shadow-dark: rgba(0, 0, 0, 0.50);
+
+$color-light: #000000;
+$background-light: #ffffff;
+$anchor-color-light: #4169e1;
+$code-color-light: #000000;
+$code-background-light: #d3d3d3;
+$code-shadow-light: rgba(255, 255, 255, 0.5);
+
+:root {
+    --color: #{$color-dark};
+    --background: #{$background-dark};
+    --anchor-color: #{$anchor-color-dark};	
+    --code-color: #{$code-color-dark};
+    --code-background: #{$code-background-dark};
+    --code-shadow: #{$code-shadow-dark};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color: #{$color-dark};
+        --background: #{$background-dark};
+        --anchor-color: #{$anchor-color-dark};	
+        --code-color: #{$code-color-dark};
+        --code-background: #{$code-background-dark};
+        --code-shadow: #{$code-shadow-dark};
+    }
+}
+
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color: #{$color-light};
+        --background: #{$background-light};
+        --anchor-color: #{$anchor-color-light};	
+        --code-color: #{$code-color-light};
+        --code-background: #{$code-background-light};
+        --code-shadow: #{$code-shadow-light};
+    }
+}
+
 #tldr-chrome
 {
     *
     {
         all: initial;
         font-family: monospace;
-        color: #ffffff;
+        color: var(--color);
     }
 
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    &::-webkit-scrollbar { /* WebKit */
+        width: 0;
+        height: 0;
+    }
     z-index: 1000;
     padding: 10px;
     box-sizing: border-box;
-    background: #4A4A4A;
+    background: var(--background);
     box-shadow: 0 2px 4px;
     border-radius: 8px;
     transition: .2s;
@@ -19,15 +71,18 @@
     height: 195px;
     width: 500px;
 
+    a {
+        color: var(--anchor-color);
+    }
     code
     {
         font-family: monospace;
         font-size: 12px;
-        background: white;
+        background: var(--code-background);
         border-radius: 2px;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.50);
+        box-shadow: 0 1px 2px 0 var(--code-shadow);
         padding: 2px;
-        color: #4A4A4A;
+        color: var(--code-color);
     }
     ul
     {
@@ -65,8 +120,8 @@
         }
         a
         {
+            color: var(--anchor-color);
             cursor: pointer;
-            color: royalblue;
         }
         .large
         {
@@ -79,13 +134,24 @@
 
 #tldr-chrome-arrow
 {
-    all: initial;
-
-    z-index: 1000;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid #4A4A4A;
+    z-index: 1001;
+    width: 50px;
+    height: 25px;
     position: absolute;
+    top: 100%;
+    left: 70%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    
+    &::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: var(--background);
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        top: 0;
+        left: 50%;
+        box-shadow: 1px 1px 20px 0px;
+    }
 }

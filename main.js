@@ -72,7 +72,7 @@ function createTooltip (content, isMarked = false) {
     Object.assign(
       arrow.style,
       {
-        left: `${(rect.left) + 5}px`,
+        left: `${(rect.left) + 25}px`,
         top: `${newtop + 195}px` // newtop + height of tooltip
       }
     )
