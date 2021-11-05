@@ -14,12 +14,18 @@
 ![Dark theme gif](assets/gifs/extension-light.gif)
 ![Light theme tooltip screenshot](assets/screenshots/light-tooltip.png)
 
-## Download
+# Download
 
 **Get the extension:**
-- For Edge: [https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
+- For Edge: [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
 - For Chrome: [in the Chrome Store](https://chrome.google.com/webstore/detail/tldr-pages/fcccijijdgmmcjnifgdhcmepnkcdingf).
 - For Firefox: [Firefox Browser Add-ons](https://addons.mozilla.org/es/firefox/addon/tldr-pages/).
+
+# How it works
+
+-  Highlight and right click a command on your webpage and select `tldr-pages` in the drop down - a tooltip should appear with information fetched from [tldr-pages](https://github.com/tldr-pages/tldr).
+
+# Development
 
 ## Loading Extension for development
 
@@ -30,11 +36,6 @@ npm i
 npm run process-styles
 ```
 - To load the extension, download the repository and open the extension preferences in Chrome/Chromium based browsers (go to `chrome://extensions`). Click the box marked as `Developer mode` and click the button `Load unpacked extension...` after which you can navigate to the project directory and load tldr-pages.
-
-
-## How it works
-
--  Highlight and right click a command on your webpage and select `tldr-pages` in the drop down - a tooltip should appear with information fetched from [tldr-pages](https://github.com/tldr-pages/tldr).
 
 # Contribute
 
