@@ -1,16 +1,32 @@
 // Define constants
 const apiContentURL = 'https://api.github.com/repos/tldr-pages/tldr/contents/pages';
 
+const portCommunicationName = 'tldr-pages-comm';
+
+const defaultContentEncoding = 'base64';
+
+const defaultPlatform = 'common';
+const defaultErrorResponse = '404: Not Found';
+const defaultNotFoundMessageHTML = '<div class="not-found"><p class="large">😱</p><p>Page Not Found!</p><p>Submit a pull request to: <a target="_blank" href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p></div>';
+
+const tooltipId = 'tldr-chrome';
+const toooltipArrowId = 'tldr-chrome-arrow';
+
+const tooltipOffset = 200;
+const arrowOffset = 25;
+const tooltipHeight = 195;
+
+// Variables
+
 let tooltip = null
 let arrow = null
 let currentContent = null
 
-
 // For right-click tldr search
 var port = chrome.runtime.connect();
-port.postMessage({comm: 'tldr-pages-comm', data: true});
+port.postMessage({comm: portCommunicationName, data: true});
 port.onMessage.addListener(function (message) {
-    if (message.comm === 'tldr-pages-comm') {
+    if (message.comm === portCommunicationName) {
       getContent(message.data);
     }
 });
@@ -20,39 +36,39 @@ function getContent(word) {
   checkCode();
 }
 
-function searchTLDR (command, platform = 'common') {
+function searchTLDR (command, platform = defaultPlatform) {
   // Fetch the content from TLDR github repo
   fetch(`${apiContentURL}/${platform}/${command}.md`)
     .then((response) => {
       return response.json();
     })
     .then(responseText => {
-      if (responseText.content && responseText.encoding == 'base64') {
+      if (responseText.content && responseText.encoding == defaultContentEncoding) {
         return atob(responseText.content);
       } else {
-        return '404: Not Found';
+        return defaultErrorResponse;
       }
     })
     .then(data => {
-      createTooltip(data)
+      createTooltip(data);
     })
 }
 
 function createTooltip (content, isMarked = false) {
-  let selection = window.getSelection()
-  let range = selection.getRangeAt(0)
-  let rect = range.getBoundingClientRect()
-  let newtop = null
+  let selection = window.getSelection();
+  let range = selection.getRangeAt(0);
+  let rect = range.getBoundingClientRect();
+  let newtop = null;
 
   if (rect.width >= 0) {
 
     if (tooltip) {
-      tooltip.parentNode.removeChild(tooltip)
+      tooltip.parentNode.removeChild(tooltip);
     }
 
-    tooltip = document.createElement('div')
-    tooltip.id = 'tldr-chrome'
-    newtop = rect.top - 200 + window.scrollY
+    tooltip = document.createElement('div');
+    tooltip.id = tooltipId;
+    newtop = rect.top - tooltipOffset + window.scrollY;
 
     Object.assign(
       tooltip.style,
@@ -60,52 +76,52 @@ function createTooltip (content, isMarked = false) {
         top: `${newtop}px`,
         left: `${rect.left}px`
       }
-    )
+    );
 
-    document.body.appendChild(tooltip)
+    document.body.appendChild(tooltip);
 
     // Create Arrow
-    arrow = document.createElement('div')
-    arrow.id = 'tldr-chrome-arrow'
-    document.body.appendChild(arrow)
+    arrow = document.createElement('div');
+    arrow.id = toooltipArrowId;
+    document.body.appendChild(arrow);
 
     Object.assign(
       arrow.style,
       {
-        left: `${(rect.left) + 5}px`,
-        top: `${newtop + 195}px` // newtop + height of tooltip
+        left: `${(rect.left) + arrowOffset}px`,
+        top: `${newtop + tooltipHeight}px`
       }
-    )
+    );
 
     // Create markdown and append to tooltip
-    let markdown = null
-    if (content.trim() === '404: Not Found') {
-      markdown = '<div class="not-found"><p class="large">😱</p><p>Page Not Found!</p><p>Submit a pull request to: <a target="_blank" href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p></div>'
+    let markdown = null;
+    if (content.trim() === defaultErrorResponse) {
+      markdown = defaultNotFoundMessageHTML;
     } else {
       if (isMarked) {
-        markdown = content
+        markdown = content;
       } else {
-        markdown = marked(content)
+        markdown = marked(content);
       }
     }
 
-    currentContent = markdown
+    currentContent = markdown;
 
-    let markdownContent = document.createElement('div')
-    markdownContent.innerHTML = markdown
-    markdownContent.className += 'tldr-chrome'
-    tooltip.appendChild(markdownContent)
+    let markdownContent = document.createElement('div');
+    markdownContent.innerHTML = markdown;
+    markdownContent.className += tooltipId;
+    tooltip.appendChild(markdownContent);
   }
 }
 
 // removes the tooltip, arrow and content
 function removeTooltip () {
   if (tooltip != null) {
-    tooltip.parentNode.removeChild(tooltip)
-    tooltip = null
-    arrow.parentNode.removeChild(arrow)
-    arrow = null
-    currentContent = null
+    tooltip.parentNode.removeChild(tooltip);
+    tooltip = null;
+    arrow.parentNode.removeChild(arrow);
+    arrow = null;
+    currentContent = null;
   }
 }
 
@@ -113,11 +129,13 @@ function removeTooltip () {
 window.onmousedown = (mouseDownEvent) => {
   let isPopup = false
   mouseDownEvent.path.forEach((elementInPath) => {
-    if (elementInPath.id === 'tldr-chrome') isPopup = true
+    if (elementInPath.id === tooltipId) {
+      isPopup = true;
+    }
   })
 
   if (!isPopup) {
-    removeTooltip()
+    removeTooltip();
   }
 }
 
@@ -129,24 +147,24 @@ function generateCommandList (callback) {
 
   fetch(apiContentURL)
     .then((response) => {
-      return response.json()
+      return response.json();
     })
     .then(data => {
-      let doc
+      let doc;
       for (doc of data) {
-        commandList.push(doc.name.split('.')[0])
+        commandList.push(doc.name.split('.')[0]);
       }
 
-      callback()
+      callback();
     })
 }
 
 // Checks if a command in pre tags is available in the TLDR github repo
 function checkCode () {
   generateCommandList(() => {
-    let tag
-    let word
-    let preTags = document.getElementsByTagName('pre')
+    let tag;
+    let word;
+    let preTags = document.getElementsByTagName('pre');
     for (tag of preTags) {
       for (word of tag.innerText.split(' ')) {
         if (commandList.includes(word.toLowerCase())) {
@@ -159,10 +177,10 @@ function checkCode () {
 
 // Deletes the tooltip and resizes when window is resized.
 window.onresize = event => {
-  let oldContent
+  let oldContent;
   if (tooltip) {
-    oldContent = currentContent
-    removeTooltip()
-    createTooltip(oldContent, true)
+    oldContent = currentContent;
+    removeTooltip();
+    createTooltip(oldContent, true);
   }
 }

@@ -1,22 +1,19 @@
-# tldr-extension-browser
-[![Publish extension in Chrome Store](https://github.com/piraces/tldr-extension-browser/actions/workflows/chrome-publish.yml/badge.svg)](https://github.com/piraces/tldr-extension-browser/actions/workflows/chrome-publish.yml)
+# tldr pages browser extension
 [![Generate artifacts to publish](https://github.com/piraces/tldr-extension-browser/actions/workflows/artifacts-zip.yml/badge.svg)](https://github.com/piraces/tldr-extension-browser/actions/workflows/artifacts-zip.yml)
 
 
 📚 A browser extension for [tldr-pages](https://github.com/tldr-pages/tldr).
 
-🚧 **There is [work in progress](https://github.com/piraces/tldr-extension-browser/projects/1) for this extension** 🚧
+👷‍♂️ There is **[work in progress](https://github.com/piraces/tldr-extension-browser/projects/1) for this extension**
 
 **Feel free to contribute 😀!!**
 
 ## Download
 
-**Note:** The extension is being reviewed by the Chrome Store and Firefox Browser Add-ons and should be published in a near future.
-
 **Get the extension:**
 - For Edge: [https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
-- 🚧 For Chrome (pending review): [in the Chrome Store](https://chrome.google.com/webstore/search/tldr-pages). 🚧
-- 🚧 For Firefox (pending review): [Firefox Browser Add-ons](https://addons.mozilla.org/es/firefox/addon/tldr-pages/) 🚧
+- For Chrome: [in the Chrome Store](https://chrome.google.com/webstore/detail/tldr-pages/fcccijijdgmmcjnifgdhcmepnkcdingf).
+- For Firefox: [Firefox Browser Add-ons](https://addons.mozilla.org/es/firefox/addon/tldr-pages/).
 
 ## Loading Extension for development
 
