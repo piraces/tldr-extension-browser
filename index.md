@@ -2,6 +2,18 @@
 
 📚 A browser extension for [tldr-pages](https://github.com/tldr-pages/tldr).
 
+![Dark theme gif](assets/gifs/extension-dark.gif)
+
+# Watch it!
+
+## Dark theme:
+![Dark theme gif](assets/gifs/extension-dark.gif)
+![Dark theme tooltip screenshot](assets/screenshots/dark-tooltip.png)
+
+## Light theme:
+![Dark theme gif](assets/gifs/extension-light.gif)
+![Light theme tooltip screenshot](assets/screenshots/light-tooltip.png)
+
 ## Download
 
 **Get the extension:**
