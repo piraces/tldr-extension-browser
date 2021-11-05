@@ -59,7 +59,7 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
         width: 0;
         height: 0;
     }
-    z-index: 1000;
+    z-index: 9999;
     padding: 10px;
     box-sizing: border-box;
     background: var(--background);
@@ -73,6 +73,7 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
 
     a {
         color: var(--anchor-color);
+        cursor: pointer;
     }
     code
     {
@@ -134,7 +135,7 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
 
 #tldr-chrome-arrow
 {
-    z-index: 1001;
+    z-index: 10000;
     width: 50px;
     height: 25px;
     position: absolute;
