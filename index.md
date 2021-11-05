@@ -1,37 +1,57 @@
-## Welcome to GitHub Pages
+# tldr pages browser extension
 
-You can use the [editor on GitHub](https://github.com/piraces/tldr-extension-browser/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+📚 A browser extension for [tldr-pages](https://github.com/tldr-pages/tldr).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Download
 
-### Markdown
+**Get the extension:**
+- For Edge: [https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
+- For Chrome: [in the Chrome Store](https://chrome.google.com/webstore/detail/tldr-pages/fcccijijdgmmcjnifgdhcmepnkcdingf).
+- For Firefox: [Firefox Browser Add-ons](https://addons.mozilla.org/es/firefox/addon/tldr-pages/).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Loading Extension for development
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+- The extension is yet to be released to the chrome webstore.
+- Ensure you compile styles and install the needed libraries running the following commands:
+```bash
+npm i
+npm run process-styles
 ```
+- To load the extension, download the repository and open the extension preferences in Chrome/Chromium based browsers (go to `chrome://extensions`). Click the box marked as `Developer mode` and click the button `Load unpacked extension...` after which you can navigate to the project directory and load tldr-pages.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+## How it works
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/piraces/tldr-extension-browser/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+-  Highlight and right click a command on your webpage and select `tldr-pages` in the drop down - a tooltip should appear with information fetched from [tldr-pages](https://github.com/tldr-pages/tldr).
 
-### Support or Contact
+# Contribute
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+👷‍♂️ There is **[work in progress](https://github.com/piraces/tldr-extension-browser/projects/1) for this extension**
+
+**Feel free to contribute 😀!!**
+
+# License
+
+MIT License
+
+Copyright (c) 2017 Tom Hill
+
+Modifications to the theme and codebase Copyright (c) 2021 Raúl Piracés @piraces_
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
