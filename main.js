@@ -13,7 +13,7 @@ const tooltipId = 'tldr-chrome';
 const toooltipArrowId = 'tldr-chrome-arrow';
 
 const tooltipOffset = 200;
-const arrowOffset = 25;
+const arrowHeight = 20;
 const tooltipHeight = 195;
 
 // Variables
@@ -59,6 +59,11 @@ function createTooltip (content, isMarked = false) {
   let range = selection.getRangeAt(0);
   let rect = range.getBoundingClientRect();
   let newtop = null;
+  let flip = false;
+
+  if (rect.top - tooltipOffset < 0) {
+    flip = true;
+  }
 
   if (rect.width >= 0) {
 
@@ -68,7 +73,7 @@ function createTooltip (content, isMarked = false) {
 
     tooltip = document.createElement('div');
     tooltip.id = tooltipId;
-    newtop = rect.top - tooltipOffset + window.scrollY;
+    newtop = flip ? rect.top + rect.height + arrowHeight + window.scrollY : rect.top - tooltipOffset + window.scrollY;
 
     Object.assign(
       tooltip.style,
@@ -88,8 +93,10 @@ function createTooltip (content, isMarked = false) {
     Object.assign(
       arrow.style,
       {
-        left: `${(rect.left) + arrowOffset}px`,
-        top: `${newtop + tooltipHeight}px`
+        left: `${rect.left}px`,
+        top: flip ? `${newtop - arrowHeight}px` : `${newtop + tooltipHeight}px`,
+        transform: flip ? 'rotate(180deg)' : 'initial',
+        height: `${arrowHeight}px`
       }
     );
 
@@ -101,7 +108,7 @@ function createTooltip (content, isMarked = false) {
       if (isMarked) {
         markdown = content;
       } else {
-        markdown = marked(content);
+        markdown = marked.parse(content);
       }
     }
 

@@ -1,6 +1,6 @@
 {
   "name": "tldr-extension-browser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Collaborative cheatsheets for console commands (tldr project) now in your Browser!",
   "main": "main.js",
   "scripts": {
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/piraces/tldr-browser-extension#readme",
   "dependencies": {
-    "marked": "^3.0.8"
+    "marked": "^4.0.0"
   },
   "devDependencies": {
     "clean-css-cli": "^5.4.2",
