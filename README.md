@@ -4,9 +4,17 @@
 
 📚 A browser extension for [tldr-pages](https://github.com/tldr-pages/tldr).
 
-👷‍♂️ There is **[work in progress](https://github.com/piraces/tldr-extension-browser/projects/1) for this extension**
+![Dark theme gif](assets/gifs/extension-dark.gif)
 
-**Feel free to contribute 😀!!**
+# Watch it!
+
+## Dark theme:
+![Dark theme gif](assets/gifs/extension-dark.gif)
+![Dark theme tooltip screenshot](assets/screenshots/dark-tooltip.png)
+
+## Light theme:
+![Dark theme gif](assets/gifs/extension-light.gif)
+![Light theme tooltip screenshot](assets/screenshots/light-tooltip.png)
 
 ## Download
 
@@ -29,6 +37,12 @@ npm run process-styles
 ## How it works
 
 -  Highlight and right click a command on your webpage and select `tldr-pages` in the drop down - a tooltip should appear with information fetched from [tldr-pages](https://github.com/tldr-pages/tldr).
+
+# Contribute
+
+👷‍♂️ There is **[work in progress](https://github.com/piraces/tldr-extension-browser/projects/1) for this extension**
+
+**Feel free to contribute 😀!!**
 
 # License
 
