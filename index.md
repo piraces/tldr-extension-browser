@@ -4,6 +4,14 @@
 
 ![Dark theme gif](assets/gifs/extension-dark.gif)
 
+# Download
+
+**Get the extension:**
+- For Edge: [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
+- For Chrome: [in the Chrome Store](https://chrome.google.com/webstore/detail/tldr-pages/fcccijijdgmmcjnifgdhcmepnkcdingf).
+- For Firefox: [Firefox Browser Add-ons](https://addons.mozilla.org/es/firefox/addon/tldr-pages/).
+
+
 # Watch it!
 
 ## Dark theme:
@@ -14,12 +22,6 @@
 ![Dark theme gif](assets/gifs/extension-light.gif)
 ![Light theme tooltip screenshot](assets/screenshots/light-tooltip.png)
 
-# Download
-
-**Get the extension:**
-- For Edge: [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/tldr-pages/hbplonhehblpcghgkhnjepdbohbpkoak)
-- For Chrome: [in the Chrome Store](https://chrome.google.com/webstore/detail/tldr-pages/fcccijijdgmmcjnifgdhcmepnkcdingf).
-- For Firefox: [Firefox Browser Add-ons](https://addons.mozilla.org/es/firefox/addon/tldr-pages/).
 
 # How it works
 
