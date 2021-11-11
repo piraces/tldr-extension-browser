@@ -53,6 +53,21 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
         color: var(--color);
     }
 
+    *:focus
+    {
+        all: initial;
+    }
+
+    *::after
+    {
+        all: initial;
+    }
+
+    *::before
+    {
+        all: initial;
+    }
+
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     &::-webkit-scrollbar { /* WebKit */

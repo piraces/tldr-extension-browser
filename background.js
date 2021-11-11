@@ -1,6 +1,6 @@
 chrome.contextMenus.create({
   title: 'tldr-pages',
-  contexts: ['selection'],
+  contexts: ['selection', 'link'],
   id: 'tldr-pages'
 });
 
@@ -19,7 +19,8 @@ function sendQueryToMain(info) {
   if (connectionPort) {
     connectionPort.postMessage({
       comm: 'tldr-pages-comm',
-      data: info.selectionText
+      data: info.selectionText,
+      linkUrl: info.linkUrl,
     });;
   }
 }

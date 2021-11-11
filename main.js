@@ -21,15 +21,38 @@ const tooltipHeight = 195;
 let tooltip = null
 let arrow = null
 let currentContent = null
+let linkElement = null;
 
 // For right-click tldr search
 var port = chrome.runtime.connect();
 port.postMessage({comm: portCommunicationName, data: true});
 port.onMessage.addListener(function (message) {
     if (message.comm === portCommunicationName) {
-      getContent(message.data);
+      if (message.data) {
+        getContent(message.data);
+      } else if (message.linkUrl) {
+        var links = document.querySelectorAll("[href='" + message.linkUrl + "']");
+        if (links && links.length > 0) {
+          linkElement = getVisibleLinkIfAny(links);
+          var text = linkElement ? linkElement.text : "";
+          getContent(text);
+        }
+      } else {
+        getContent("");
+      }
     }
 });
+
+function getVisibleLinkIfAny(links) {
+  for (var i = 0; i < links.length; i++) {
+    var link = links[i];
+    position = link.getBoundingClientRect();
+    if (position.top >= 0 && position.bottom <= window.innerHeight) {
+      return link;
+    }
+  }
+  return undefined;
+}
 
 function getContent(word) {
   searchTLDR(word.toLowerCase().trim().replace(' ', '-'));
@@ -54,7 +77,18 @@ function searchTLDR (command, platform = defaultPlatform) {
     })
 }
 
+function selectElementContents(el) {
+  var range = document.createRange();
+  range.selectNodeContents(el);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+}
+
 function createTooltip (content, isMarked = false) {
+  if (linkElement) {
+    selectElementContents(linkElement);
+  }
   let selection = window.getSelection();
   let range = selection.getRangeAt(0);
   let rect = range.getBoundingClientRect();
