@@ -3,6 +3,10 @@ styles/main.css
 styles/main.min.css
 styles/main.min.css.map
 styles/main.css.map
+styles/popup.css
+styles/popup.min.css
+styles/popup.min.css.map
+styles/popup.css.map
 node_modules
 .DS_Store
 *.zip

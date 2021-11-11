@@ -169,7 +169,7 @@ function removeTooltip () {
 // Ensures the tldr tooltip does not close if clicked on
 window.onmousedown = (mouseDownEvent) => {
   let isPopup = false
-  mouseDownEvent.path.forEach((elementInPath) => {
+  mouseDownEvent.composedPath().forEach((elementInPath) => {
     if (elementInPath.id === tooltipId) {
       isPopup = true;
     }
