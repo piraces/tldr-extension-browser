@@ -10,3 +10,4 @@ styles/popup.css.map
 node_modules
 .DS_Store
 *.zip
+.vs

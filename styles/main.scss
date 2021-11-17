@@ -4,73 +4,64 @@ $anchor-color-dark: #9cb2f5;
 $code-color-dark: #ffffff;
 $code-background-dark: #313131;
 $code-shadow-dark: rgba(0, 0, 0, 0.50);
-
 $color-light: #000000;
 $background-light: #ffffff;
 $anchor-color-light: #4169e1;
 $code-color-light: #000000;
 $code-background-light: #d3d3d3;
 $code-shadow-light: rgba(255, 255, 255, 0.5);
-
 :root {
     --color: #{$color-dark};
     --background: #{$background-dark};
-    --anchor-color: #{$anchor-color-dark};	
+    --anchor-color: #{$anchor-color-dark};
     --code-color: #{$code-color-dark};
     --code-background: #{$code-background-dark};
     --code-shadow: #{$code-shadow-dark};
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
+     :root {
         --color: #{$color-dark};
         --background: #{$background-dark};
-        --anchor-color: #{$anchor-color-dark};	
+        --anchor-color: #{$anchor-color-dark};
         --code-color: #{$code-color-dark};
         --code-background: #{$code-background-dark};
         --code-shadow: #{$code-shadow-dark};
     }
 }
 
-
 @media (prefers-color-scheme: light) {
-    :root {
+     :root {
         --color: #{$color-light};
         --background: #{$background-light};
-        --anchor-color: #{$anchor-color-light};	
+        --anchor-color: #{$anchor-color-light};
         --code-color: #{$code-color-light};
         --code-background: #{$code-background-light};
         --code-shadow: #{$code-shadow-light};
     }
 }
 
-#tldr-chrome
-{
-    *
-    {
+#tldr-chrome {
+    * {
         all: initial;
         font-family: monospace;
         color: var(--color);
     }
-
-    *:focus
-    {
+    *:focus {
         all: initial;
     }
-
-    *::after
-    {
+    *::after {
         all: initial;
     }
-
-    *::before
-    {
+    *::before {
         all: initial;
     }
-
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    &::-webkit-scrollbar { /* WebKit */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    &::-webkit-scrollbar {
+        /* WebKit */
         width: 0;
         height: 0;
     }
@@ -85,13 +76,11 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
     overflow: auto;
     height: 195px;
     width: 500px;
-
     a {
         color: var(--anchor-color);
         cursor: pointer;
     }
-    code
-    {
+    code {
         font-family: monospace;
         font-size: 12px;
         background: var(--code-background);
@@ -100,47 +89,39 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
         padding: 2px;
         color: var(--code-color);
     }
-    ul
-    {
+    ul {
         margin-left: 0;
         padding-left: 0;
     }
-    li
-    {
+    li {
         font-size: 12px;
         list-style-type: none;
         line-height: 2;
     }
-    p
-    {
+    p {
         margin-top: 0;
         margin-bottom: 10px;
         display: block;
         font-size: 15px;
     }
-    h1
-    {
+    h1 {
         font-size: 30px;
         font-weight: bold;
     }
-    blockquote, blockquote p
-    {
+    blockquote,
+    blockquote p {
         font-size: 15px;
         font-style: italic;
     }
-    .not-found
-    {
-        p
-        {
+    .not-found {
+        p {
             text-align: center;
         }
-        a
-        {
+        a {
             color: var(--anchor-color);
             cursor: pointer;
         }
-        .large
-        {
+        .large {
             font-size: 50px;
             padding: 30px 0 0;
             margin: 0;
@@ -148,8 +129,7 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
     }
 }
 
-#tldr-chrome-arrow
-{
+#tldr-chrome-arrow {
     z-index: 10000;
     width: 50px;
     height: 25px;
@@ -157,7 +137,6 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
     top: 100%;
     transform: translateX(-50%);
     overflow: hidden;
-    
     &::after {
         content: "";
         position: absolute;
@@ -167,6 +146,5 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
         transform: translateX(-50%) translateY(-50%) rotate(45deg);
         top: 0;
         left: 50%;
-        box-shadow: 1px 1px 20px 0px;
     }
 }
