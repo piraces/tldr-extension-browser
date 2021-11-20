@@ -25,7 +25,7 @@
 - [x] Icon for right-click menu bar
 - [x] Icon for store
 
-## v.1.0.1 (current)
+## v.1.0.1
 - [x] Screenshots
 - [x] Gifs
 - [x] Description
@@ -35,3 +35,22 @@
 - [x] Flip tooltip depending on selection in screen
 - [x] Code cleanup
 - [x] Improved pipelines
+
+## v1.0.2
+### Improvements
+- [x] Help popup in extension button
+- [x] Code cleanup
+- [x] Improved pipelines
+- [x] Allow selecting links 
+
+### Bugfixes
+- [x] Override styles with `::before` or `::after` selectors
+
+## v1.0.3 (current)
+### Improvements
+- [x] Bumped dependencies versions
+
+### Bugfixes
+
+- [x] Fixed weird bug of positioning when requesting info for a link and later request info for a selection
+- [x] Don't allow to create a popup from a selection inside a popup
