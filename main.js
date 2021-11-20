@@ -10,6 +10,7 @@ const defaultContentEncoding = 'base64';
 const defaultErrorResponse = '404: Not Found';
 const defaultNotFoundMessageHTML = '<div class="not-found"><p class="large">😱</p><p>Page Not Found!</p><p>Submit a pull request to: <a target="_blank" href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p></div>';
 const defaultSpinnerHTML = '<div id="tldr-chrome-spinner"></div>';
+const defaultCopyCodeButtonText = 'Copy!';
 
 const tooltipId = 'tldr-chrome';
 const toooltipArrowId = 'tldr-chrome-arrow';
@@ -167,6 +168,33 @@ function createTooltip(content, isMarked = false) {
         markdownContent.innerHTML = markdown;
         markdownContent.className += tooltipId;
         tooltip.appendChild(markdownContent);
+        formatCodeInsideTooltip();
+    }
+}
+
+function copyCodeToClipboard(event) {
+    const codeContent = event.currentTarget.parentElement.firstElementChild.textContent;
+    if (codeContent) {
+        navigator.clipboard.writeText(codeContent);
+    }
+}
+
+function formatCodeInsideTooltip() {
+    let codeBlocks = document.querySelectorAll('#' + tooltipId + ' p > code');
+    for (let i = 0; i < codeBlocks.length; i++) {
+        let codeBlock = codeBlocks[i];
+        let newButton = document.createElement('button');
+        newButton.type = 'button';
+        newButton.className = 'copy-code-button';
+        newButton.innerHTML = defaultCopyCodeButtonText;
+        codeBlock.parentElement.appendChild(newButton);
+    }
+
+    const buttons = document.querySelectorAll('#tldr-chrome button.copy-code-button');
+    if (buttons && buttons.length > 0) {
+        buttons.forEach(button => {
+            button.addEventListener('click', copyCodeToClipboard);
+        });
     }
 }
 

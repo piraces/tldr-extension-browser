@@ -89,6 +89,38 @@ $code-shadow-light: rgba(255, 255, 255, 0.5);
         padding: 2px;
         color: var(--code-color);
     }
+    button.copy-code-button,
+    button.copy-code-button:focus {
+        display: inline-flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: 10px;
+        background: var(--code-background);
+        outline: none;
+        box-shadow: none;
+        border-color: var(--code-color);
+        border-style: solid;
+        border-width: thin;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px 0 var(--code-shadow);
+        padding: 2px;
+        color: var(--code-color);
+        font-family: monospace;
+        font-size: 12px;
+
+        &:focus {
+            animation: change-text 1s ease-in-out;
+            @keyframes change-text {
+                0% { opacity: 0.1; }
+                50% { opacity: 0.5; }
+                100% { opacity: 1; }
+              }
+        }
+    }
     ul {
         margin-left: 0;
         padding-left: 0;

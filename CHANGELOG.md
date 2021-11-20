@@ -46,7 +46,7 @@
 ### Bugfixes
 - [x] Override styles with `::before` or `::after` selectors
 
-## v1.0.3 (current)
+## v1.0.3
 ### Improvements
 - [x] Bumped dependencies versions
 
@@ -54,3 +54,11 @@
 
 - [x] Fixed weird bug of positioning when requesting info for a link and later request info for a selection
 - [x] Don't allow to create a popup from a selection inside a popup
+
+## v1.1.0 (current)
+### Improvements
+- [x] Bumped dependencies versions
+- [x] Spinner while searching for results
+- [x] Searching for all sections of pages (android, linux, osx, windows...)
+- [x] Copy to clipboard in code examples inside tooltip
+- [x] Minimize published JS files && reduce total bundle size pruning unused files

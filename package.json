@@ -6,7 +6,8 @@
     "scripts": {
         "process-styles": "npm run compile-styles && npm run css-minify",
         "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 styles/main.scss styles/main.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 styles/popup.scss styles/popup.css",
-        "css-minify": "cleancss --format breaksWith=lf --output styles/main.min.css styles/main.css && cleancss --format breaksWith=lf --output styles/popup.min.css styles/popup.css"
+        "css-minify": "cleancss --format breaksWith=lf --output styles/main.min.css styles/main.css && cleancss --format breaksWith=lf --output styles/popup.min.css styles/popup.css",
+        "js-minify": "uglifyjs main.js -o main.js && uglifyjs background.js -o background.js"
     },
     "repository": {
         "type": "git",
@@ -29,6 +30,7 @@
     },
     "devDependencies": {
         "clean-css-cli": "^5.4.2",
-        "node-sass": "^6.0.1"
+        "node-sass": "^6.0.1",
+        "uglify-js": "^3.14.3"
     }
 }
