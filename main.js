@@ -1,11 +1,12 @@
 // Define constants
 const apiContentURL = 'https://api.github.com/repos/tldr-pages/tldr/contents/pages';
+const defaultPlatform = 'common';
+const pagesDirs = [defaultPlatform, "android", "linux", "osx", "sunos", "windows"];
 
 const portCommunicationName = 'tldr-pages-comm';
 
 const defaultContentEncoding = 'base64';
 
-const defaultPlatform = 'common';
 const defaultErrorResponse = '404: Not Found';
 const defaultNotFoundMessageHTML = '<div class="not-found"><p class="large">😱</p><p>Page Not Found!</p><p>Submit a pull request to: <a target="_blank" href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p></div>';
 const defaultSpinnerHTML = '<div id="tldr-chrome-spinner"></div>';
@@ -58,14 +59,20 @@ function getVisibleLinkIfAny(links) {
     return undefined;
 }
 
-function getContent(word) {
-    searchTLDR(word.toLowerCase().trim().replace(' ', '-'));
-    checkCode();
+async function getContent(word) {
+    let result = defaultErrorResponse;
+    const wordFormatted = word.toLowerCase().trim().replace(' ', '-');
+    let currentDirIndex = 0;
+    while (result === defaultErrorResponse && currentDirIndex < pagesDirs.length) {
+        result = await searchTLDR(wordFormatted, pagesDirs[currentDirIndex]);
+        currentDirIndex++;
+    }
+    createTooltip(result);
 }
 
-function searchTLDR(command, platform = defaultPlatform) {
+async function searchTLDR(command, platform = defaultPlatform) {
     // Fetch the content from TLDR github repo
-    fetch(`${apiContentURL}/${platform}/${command}.md`)
+    return fetch(`${apiContentURL}/${platform}/${command}.md`)
         .then((response) => {
             return response.json();
         })
@@ -76,10 +83,8 @@ function searchTLDR(command, platform = defaultPlatform) {
                 return defaultErrorResponse;
             }
         })
-        .then(data => {
-            createTooltip(data);
-        }).catch(_ => {
-            createTooltip(defaultErrorResponse);
+        .catch(_ => {
+            return defaultErrorResponse;
         });
 }
 
@@ -188,43 +193,6 @@ window.onmousedown = (mouseDownEvent) => {
     if (!isPopup) {
         removeTooltip();
     }
-}
-
-let commandList = []
-
-// Creates a list of all commands available in the TLDR repo
-function generateCommandList(callback) {
-    commandList = []
-
-    fetch(apiContentURL)
-        .then((response) => {
-            return response.json();
-        })
-        .then(data => {
-            let doc;
-            for (doc of data) {
-                commandList.push(doc.name.split('.')[0]);
-            }
-            callback();
-        }).catch(_ => {
-            callback();
-        });
-}
-
-// Checks if a command in pre tags is available in the TLDR github repo
-function checkCode() {
-    generateCommandList(() => {
-        let tag;
-        let word;
-        let preTags = document.getElementsByTagName('pre');
-        for (tag of preTags) {
-            for (word of tag.innerText.split(' ')) {
-                if (commandList.includes(word.toLowerCase())) {
-                    // if word is in commandList
-                }
-            }
-        }
-    })
 }
 
 // Deletes the tooltip and resizes when window is resized.
