@@ -8,6 +8,7 @@ const defaultContentEncoding = 'base64';
 const defaultPlatform = 'common';
 const defaultErrorResponse = '404: Not Found';
 const defaultNotFoundMessageHTML = '<div class="not-found"><p class="large">😱</p><p>Page Not Found!</p><p>Submit a pull request to: <a target="_blank" href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p></div>';
+const defaultSpinnerHTML = '<div id="tldr-chrome-spinner"></div>';
 
 const tooltipId = 'tldr-chrome';
 const toooltipArrowId = 'tldr-chrome-arrow';
@@ -30,6 +31,7 @@ port.postMessage({ comm: portCommunicationName, data: true });
 port.onMessage.addListener(function(message) {
     linkElement = null;
     if (message.comm === portCommunicationName) {
+        createTooltip(defaultSpinnerHTML, true);
         if (message.data) {
             getContent(message.data);
         } else if (message.linkUrl) {
@@ -76,7 +78,9 @@ function searchTLDR(command, platform = defaultPlatform) {
         })
         .then(data => {
             createTooltip(data);
-        })
+        }).catch(_ => {
+            createTooltip(defaultErrorResponse);
+        });
 }
 
 function selectElementContents(el) {
@@ -202,7 +206,9 @@ function generateCommandList(callback) {
                 commandList.push(doc.name.split('.')[0]);
             }
             callback();
-        })
+        }).catch(_ => {
+            callback();
+        });
 }
 
 // Checks if a command in pre tags is available in the TLDR github repo

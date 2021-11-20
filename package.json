@@ -1,6 +1,6 @@
 {
     "name": "tldr-extension-browser",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "Collaborative cheatsheets for console commands (tldr project) now in your Browser!",
     "main": "main.js",
     "scripts": {
