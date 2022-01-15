@@ -27,6 +27,7 @@
     },
     "homepage": "https://github.com/piraces/tldr-browser-extension#readme",
     "dependencies": {
+        "dompurify": "^2.3.4",
         "marked": "^4.0.10"
     },
     "devDependencies": {

@@ -70,4 +70,5 @@
 
 ### Improvements
 - [x] Generated bash scripts to generate all extensions for different browsers in `./scripts`
-- [x] Improved docs on how to generate the Firefox extension with `.xpi` extension due to publish requirements.
+- [x] Generated docs on how to generate the Firefox extension with `.xpi` extension due to publish requirements (also for Edge and Chrome).
+- [x] Safer HTML inclusion with [DOMPurify](https://github.com/cure53/DOMPurify).

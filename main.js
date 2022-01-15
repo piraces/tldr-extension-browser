@@ -162,11 +162,9 @@ function createTooltip(content, isMarked = false) {
             }
         }
 
-        currentContent = markdown;
-
         let markdownContent = document.createElement('div');
-        // Warning
-        markdownContent.innerHTML = markdown;
+        currentContent = DOMPurify.sanitize(markdown);
+        markdownContent.innerHTML = currentContent;
         markdownContent.className += tooltipId;
         tooltip.appendChild(markdownContent);
         formatCodeInsideTooltip();

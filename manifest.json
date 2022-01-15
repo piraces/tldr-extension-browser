@@ -11,6 +11,7 @@
         ],
         "js": [
             "node_modules/marked/marked.min.js",
+            "node_modules/dompurify/dist/purify.min.js",
             "main.js"
         ],
         "css": [
