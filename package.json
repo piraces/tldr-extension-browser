@@ -1,13 +1,14 @@
 {
     "name": "tldr-extension-browser",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "Collaborative cheatsheets for console commands (tldr project) now in your Browser!",
     "main": "main.js",
     "scripts": {
         "process-styles": "npm run compile-styles && npm run css-minify",
         "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 styles/main.scss styles/main.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 styles/popup.scss styles/popup.css",
         "css-minify": "cleancss --format breaksWith=lf --output styles/main.min.css styles/main.css && cleancss --format breaksWith=lf --output styles/popup.min.css styles/popup.css",
-        "js-minify": "uglifyjs main.js -o main.js && uglifyjs background.js -o background.js"
+        "js-minify": "uglifyjs main.js -o main.js && uglifyjs background.js -o background.js",
+        "clean": "rimraf node_modules"
     },
     "repository": {
         "type": "git",
@@ -26,11 +27,12 @@
     },
     "homepage": "https://github.com/piraces/tldr-browser-extension#readme",
     "dependencies": {
-        "marked": "^4.0.4"
+        "marked": "^4.0.10"
     },
     "devDependencies": {
-        "clean-css-cli": "^5.4.2",
-        "node-sass": "^6.0.1",
-        "uglify-js": "^3.14.3"
+        "clean-css-cli": "^5.5.0",
+        "node-sass": "^7.0.1",
+        "rimraf": "^3.0.2",
+        "uglify-js": "^3.14.5"
     }
 }

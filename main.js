@@ -165,6 +165,7 @@ function createTooltip(content, isMarked = false) {
         currentContent = markdown;
 
         let markdownContent = document.createElement('div');
+        // Warning
         markdownContent.innerHTML = markdown;
         markdownContent.className += tooltipId;
         tooltip.appendChild(markdownContent);
@@ -186,7 +187,7 @@ function formatCodeInsideTooltip() {
         let newButton = document.createElement('button');
         newButton.type = 'button';
         newButton.className = 'copy-code-button';
-        newButton.innerHTML = defaultCopyCodeButtonText;
+        newButton.textContent = defaultCopyCodeButtonText;
         codeBlock.parentElement.appendChild(newButton);
     }
 

@@ -55,10 +55,19 @@
 - [x] Fixed weird bug of positioning when requesting info for a link and later request info for a selection
 - [x] Don't allow to create a popup from a selection inside a popup
 
-## v1.1.0 (current)
+## v1.1.0
 ### Improvements
 - [x] Bumped dependencies versions
 - [x] Spinner while searching for results
 - [x] Searching for all sections of pages (android, linux, osx, windows...)
 - [x] Copy to clipboard in code examples inside tooltip
 - [x] Minimize published JS files && reduce total bundle size pruning unused files
+
+## v1.1.1 (current)
+### Bugfixes
+- [x] Bumped dependencies versions
+- [x] Solved all warnings of Firefox extension and bumped min version for Firefox to 57.0
+
+### Improvements
+- [x] Generated bash scripts to generate all extensions for different browsers in `./scripts`
+- [x] Improved docs on how to generate the Firefox extension with `.xpi` extension due to publish requirements.
