@@ -20,8 +20,8 @@ jobs:
         with:
           node-version: "16"
       - run: |
-        chmod +x generateChromeExtension.sh
-        ./generateChromeExtension.sh
+          chmod +x ./scripts/generateChromeExtension.sh
+          ./scripts/generateChromeExtension.sh
       - uses: actions/upload-artifact@v2
         with:
           name: tldr-pages-chrome
@@ -38,8 +38,8 @@ jobs:
         with:
           node-version: "16"
       - run: |
-        chmod +x generateFirefoxExtension.sh
-        ./generateFirefoxExtension.sh
+          chmod +x ./scripts/generateFirefoxExtension.sh
+          ./scripts/generateFirefoxExtension.sh
       - uses: actions/upload-artifact@v2
         with:
           name: tldr-pages-firefox
@@ -56,8 +56,8 @@ jobs:
         with:
           node-version: "16"
       - run: |
-        chmod +x generateEdgeExtension.sh
-        ./generateEdgeExtension.sh
+          chmod +x ./scripts/generateEdgeExtension.sh
+          ./scripts/generateEdgeExtension.sh
       - uses: actions/upload-artifact@v2
         with:
           name: tldr-pages-edge
